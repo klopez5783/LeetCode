@@ -5,13 +5,19 @@
  */
 var twoSum = function(nums, target) {
 
-   
-    for ( let i = 0 ; i < nums.length ; i++){
-        let check = target - nums[i]; 
-        let indexCheck = nums.indexOf(check);
-        if ( indexCheck != -1 && indexCheck != i ){
-            return [i,indexCheck];
+    const map = new Map();
+
+    for(let i = 0 ; i < nums.length ; i++){
+        map.set(nums[i],i);
+    }
+
+    for(let i = 0 ; i < nums.length ; i++){
+        let num = target - nums[i]
+        if(map.get(num) && i != map.get(num) ){
+            return [i,map.get(num)]
         }
     }
+
+    
     
 };
